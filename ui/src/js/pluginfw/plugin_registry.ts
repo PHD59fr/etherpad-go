@@ -1,6 +1,4 @@
 // @ts-nocheck
-'use strict';
-
 /**
  * Plugin Registry - Registriert alle client_hooks Module zur Build-Zeit
  *
@@ -8,16 +6,22 @@
  * Generiert von: build.js
  */
 
-const pluginUtils = require('./shared');
+import * as pluginUtils from './shared';
+import * as pluginModule0 from '../messageHandler';
+import * as pluginModule1 from '../../../../plugins/ep_align/static/js/index';
+import * as pluginModule2 from '../../../../plugins/ep_heading/static/js/index';
+import * as pluginModule3 from '../../../../plugins/ep_heading/static/js/shared';
+import * as pluginModule4 from '../../../../plugins/ep_markdown/static/js/markdown';
+import * as pluginModule5 from '../../../../plugins/ep_spellcheck/static/js/index';
 
 // Mapping von Modul-Pfaden zu ihren Implementierungen
 const builtinModules = {
-  'ep_etherpad-lite/static/js/messageHandler': require('../messageHandler'),
-  'ep_align/static/js/index': require('../../../../plugins/ep_align/static/js/index'),
-  'ep_heading/static/js/index': require('../../../../plugins/ep_heading/static/js/index'),
-  'ep_heading/static/js/shared': require('../../../../plugins/ep_heading/static/js/shared'),
-  'ep_markdown/static/js/markdown': require('../../../../plugins/ep_markdown/static/js/markdown'),
-  'ep_spellcheck/static/js/index': require('../../../../plugins/ep_spellcheck/static/js/index'),
+  'ep_etherpad-lite/static/js/messageHandler': pluginModule0,
+  'ep_align/static/js/index': pluginModule1,
+  'ep_heading/static/js/index': pluginModule2,
+  'ep_heading/static/js/shared': pluginModule3,
+  'ep_markdown/static/js/markdown': pluginModule4,
+  'ep_spellcheck/static/js/index': pluginModule5,
 };
 
 /**
@@ -43,6 +47,4 @@ const getModuleMap = () => {
 // Automatisch beim Import registrieren
 registerBuiltinPlugins();
 
-exports.registerBuiltinPlugins = registerBuiltinPlugins;
-exports.getModuleMap = getModuleMap;
-exports.builtinModules = builtinModules;
+export { registerBuiltinPlugins, getModuleMap, builtinModules };

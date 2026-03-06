@@ -1,5 +1,4 @@
 // @ts-nocheck
-'use strict';
 
 /**
  * This code is mostly from the old Etherpad. Please help us to comment this code.
@@ -24,9 +23,8 @@
  */
 
 import {characterRangeFollow, compose, follow, isIdentity, unpack} from './Changeset';
-const _ = require('./underscore');
 
-const undoModule = (() => {
+export const undoModule = (() => {
   const stack = (() => {
     const stackElements = [];
     // two types of stackElements:
@@ -51,8 +49,9 @@ const undoModule = (() => {
     clearStack();
 
     const pushEvent = (event) => {
-      const e = _.extend(
-          {}, event);
+      const e = {
+        ...event,
+      };
       e.elementType = UNDOABLE_EVENT;
       stackElements.push(e);
       numUndoableEvents++;
@@ -282,5 +281,3 @@ const undoModule = (() => {
     apool: null,
   }; // apool is filled in by caller
 })();
-
-exports.undoModule = undoModule;
